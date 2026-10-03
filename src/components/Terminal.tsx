@@ -52,7 +52,7 @@ const helpText = [
   "  contact     find my email",
   "  linkedin    open LinkedIn profile",
   "  github      open GitHub profile",
-  "  resume      open source profile PDF",
+  "  resume      open the profile PDF",
   "  theme       toggle the terminal palette",
   "  ls          list portfolio sections",
   "  clear       clear terminal output",
@@ -126,7 +126,7 @@ export function Terminal({ onNavigate, theme, onToggleTheme }: TerminalProps) {
       response = "Opening GitHub profile in a new tab...";
     } else if (command === "resume") {
       window.open("/profile.pdf", "_blank", "noopener,noreferrer");
-      response = "Opening the original LinkedIn profile PDF...";
+      response = "Opening the profile PDF...";
     } else if (command === "theme") {
       onToggleTheme();
       response = `Theme switched to ${theme === "green" ? "amber" : "green"}.`;
