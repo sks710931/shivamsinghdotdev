@@ -97,7 +97,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .terminal__title { color: #9cad9c; display: flex; align-items: center; gap: 7px; font: 10px var(--mono); }
 .terminal__version { color: #778578; font: 9px var(--mono); }
 .terminal__output { height: 343px; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 24px 24px 10px; scrollbar-color: #395b40 transparent; scrollbar-width: thin; }
-.terminal__ascii { color: var(--accent); white-space: pre; font: 700 clamp(6.5px, .8vw, 10px)/1.5 var(--mono); overflow: hidden; letter-spacing: -.01em; margin-bottom: 16px; }
+.terminal__ascii { color: var(--accent); white-space: pre; font: 700 clamp(6.5px, .8vw, 10px)/1.15 var(--mono); overflow-x: auto; letter-spacing: 0; margin-bottom: 16px; }
 .terminal__init { font: 10px/1.95 var(--mono); color: #a2b6a6; }
 .terminal__init span { color: var(--accent); font-weight: 700; }
 .terminal__welcome { color: #b0bdb0; font: 11px/1.8 var(--mono); margin: 13px 0 15px; }

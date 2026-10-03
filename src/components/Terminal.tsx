@@ -190,9 +190,11 @@ export function Terminal({ onNavigate, theme, onToggleTheme }: TerminalProps) {
       </div>
       <div className="terminal__output" ref={outputRef} role="log" aria-live="polite" aria-relevant="additions">
         <div className="terminal__ascii" aria-hidden="true">
-          {
-            "  ____  _   _ _____   ____  _   _   _    __  __\n / ___|| | | |_   _| / ___|| | | | / \\  |  \\/  |\n \\___ \\| |_| | | |   \\___ \\| |_| |/ _ \\ | |\\/| |\n  ___) |  _  | | |    ___) |  _  / ___ \\| |  | |\n |____/|_| |_| |_|   |____/|_| |_/_/   \\_\\_|  |_|"
-          }
+          {` ____    _   _   ___  __     __     _      __  __
+/ ___|  | | | | |_ _| \\ \\   / /    / \\    |  \\/  |
+\\___ \\  | |_| |  | |   \\ \\ / /    / _ \\   | |\\/| |
+ ___) | |  _  |  | |    \\ V /    / ___ \\  | |  | |
+|____/  |_| |_| |___|    \\_/    /_/   \\_\\ |_|  |_|`}
         </div>
         <div className="terminal__init">
           [ <span>OK</span> ] Portfolio initialized.
