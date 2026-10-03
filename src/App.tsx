@@ -195,7 +195,7 @@ export default function App() {
             <span>
               <span className="signal-pulse" /> TERMINAL PORTFOLIO / ONLINE
             </span>
-            <span className="system-strip__middle">SECURITY · ARCHITECTURE · DISTRIBUTED SYSTEMS</span>
+            <span className="system-strip__middle">IDENTITY · LICENSING · INDUSTRIAL SAAS</span>
             <span>
               BLR, IN <span className="system-strip__muted">/</span> 12.9716° N
             </span>
@@ -216,8 +216,8 @@ export default function App() {
                 <span className="hero__role-bar" /> STAFF SOFTWARE ENGINEER
               </div>
               <p className="hero__intro">
-                I design and build <strong>secure, scalable systems</strong> that work where architecture, cloud, and
-                application security meet.
+                I build the shared platforms behind industrial software — <strong>identity, licensing, and the browser
+                products</strong> engineers use to design machines.
               </p>
               <div className="hero__tags">
                 <span>/.NET</span>
@@ -273,20 +273,21 @@ export default function App() {
             </div>
             <div className="section__right about-copy">
               <p className="about-copy__lead">
-                I work on the problems that happen <em>between</em> the boxes on an architecture diagram.
+                I work on the platforms that more than one product has to share.
               </p>
               <p>
-                I'm a Staff Software Engineer at <strong>Gleason Corporation</strong>, focused on designing and
-                building secure, scalable enterprise software. My core stack is{" "}
-                <strong>.NET / C#, React / TypeScript, and Azure</strong>.
+                I'm <strong>Shivam Kumar Singh</strong>, a Staff Software Engineer at{" "}
+                <strong>Gleason Corporation</strong>. Nearly ten years in, the work is industrial SaaS, centralised
+                identity, software licensing, and governed AI — still hands-on, now also leading five engineers.
               </p>
               <p>
-                What interests me most: defining service boundaries, designing identity flows, handling long-running and
-                stateful workloads, and making systems maintainable as their complexity grows.
+                The recent platforms: <strong>KISSsoft</strong> in the browser, a cloud license manager that keeps
+                runtime state in Redis, an OpenIddict single sign-on authority, and <strong>GEMS</strong>, an agent
+                system that does not act without a person.
               </p>
               <p>
-                My role spans implementation and architecture — design reviews, identifying systemic risks, guiding
-                technical direction, and turning ambiguous requirements into practical engineering solutions.
+                Before Gleason I shipped automotive CRM at DealerSocket and healthcare practice-management software at
+                Allscripts, including the first moves of that estate onto React, Docker, and Azure.
               </p>
               <div className="about-copy__quote">
                 <span>{"/* ENGINEERING PRINCIPLE */"}</span>
@@ -295,15 +296,15 @@ export default function App() {
               <div className="about-copy__facts">
                 <div>
                   <span>FOCUS</span>
-                  <strong>Systems over features</strong>
+                  <strong>Platforms, not one-offs</strong>
                 </div>
                 <div>
                   <span>WORKING SINCE</span>
                   <strong>2016</strong>
                 </div>
                 <div>
-                  <span>LOCATION</span>
-                  <strong>Bengaluru, IN</strong>
+                  <span>NOW</span>
+                  <strong>Leading 5 engineers</strong>
                 </div>
                 <div>
                   <span>LANGUAGES</span>
@@ -346,8 +347,8 @@ export default function App() {
             <div className="stack-marquee" aria-label="Core technologies">
               <span>CORE STACK</span>
               <div>
-                .NET / C# <span>✳</span> REACT <span>✳</span> TYPESCRIPT <span>✳</span> AZURE <span>✳</span> SQL SERVER{" "}
-                <span>✳</span> REDIS <span>✳</span> DOCKER <span>✳</span> OIDC
+                .NET / C# <span>✳</span> REACT <span>✳</span> OPENIDDICT <span>✳</span> SQL SERVER <span>✳</span> REDIS{" "}
+                <span>✳</span> AZURE <span>✳</span> DOCKER <span>✳</span> MQTT
               </div>
             </div>
           </div>
@@ -365,7 +366,7 @@ export default function App() {
                 label="CAREER TIMELINE"
                 id="experience-heading"
                 title="Built over time"
-                subtitle="A career across enterprise products, full-stack delivery, security, and software architecture."
+                subtitle="Industrial SaaS, licensing, identity, and healthcare products. Roles first, then the systems under them."
               />
               <p className="experience-section__hint">// SCROLL THROUGH THE LOGS ↓</p>
             </div>
@@ -384,7 +385,12 @@ export default function App() {
                     {entry.company} {entry.location && <span>↗ {entry.location}</span>}
                   </div>
                   <p>{entry.description}</p>
-                  <ul>
+                  <ul className="career-item__points">
+                    {entry.highlights.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <ul className="career-item__tags">
                     {entry.tags.map((tag) => (
                       <li key={tag}>{tag}</li>
                     ))}
@@ -404,18 +410,20 @@ export default function App() {
             <div className="section__intro">
               <SectionTitle
                 number="04"
-                label="ENGINEERING FOCUS"
+                label="SELECTED PLATFORMS"
                 id="systems-heading"
-                title="The problems I like solving"
-                subtitle="Selected areas of professional work, drawn from experience. These are focus areas, not published client case studies."
+                title="Systems I have actually shipped"
+                subtitle="Named work from Gleason. Descriptions stay at the architecture level — no private diagrams, metrics, or customer data."
               />
-              <div className="section__intro-corner">[ SYSTEMS: 03 ]</div>
+              <div className="section__intro-corner">[ SYSTEMS: 04 ]</div>
             </div>
             <div className="systems-grid">
               {systemAreas.map((area) => (
                 <article className="system-card" key={area.index}>
                   <div className="system-card__top">
-                    <span>{area.index} / 03</span>
+                    <span>
+                      {area.index} / {String(systemAreas.length).padStart(2, "0")}
+                    </span>
                     <ArrowUpRight size={20} aria-hidden="true" />
                   </div>
                   <span className="system-card__label">{area.label}</span>
@@ -430,8 +438,7 @@ export default function App() {
               ))}
             </div>
             <div className="systems-section__note">
-              <ShieldCheck size={15} aria-hidden="true" /> Scope deliberately excludes proprietary implementation
-              details and undisclosed outcomes.
+              <ShieldCheck size={15} aria-hidden="true" /> Architecture-level descriptions only. No private diagrams, metrics, or customer data.
             </div>
           </div>
         </section>
@@ -485,6 +492,7 @@ export default function App() {
               </div>
               <div className="contact-panel__bottom">
                 <span>MAILTO::{portfolio.email}</span>
+                <span>TEL::{portfolio.phone}</span>
                 <span>STATUS::READY_TO_CONNECT</span>
               </div>
             </div>

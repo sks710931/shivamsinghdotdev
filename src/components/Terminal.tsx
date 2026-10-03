@@ -47,7 +47,7 @@ const helpText = [
   "  about       read the longer story",
   "  skills      explore the engineering stack",
   "  experience  show the career timeline",
-  "  systems     explore engineering focus areas",
+  "  systems     show the platforms I have shipped",
   "  education   education and certification",
   "  contact     find my email",
   "  linkedin    open LinkedIn profile",
@@ -65,19 +65,21 @@ function getCommandResponse(command: string): string | null {
     case "help":
       return helpText;
     case "whoami":
-      return `${portfolio.name}\n${portfolio.role} · ${portfolio.location}\n.NET / C#  ·  React / TypeScript  ·  Azure\nDesigning secure, scalable distributed systems.`;
+      return `${portfolio.name}\n${portfolio.role} · Gleason · ${portfolio.location}\nLeading 5 engineers · .NET / C# · React · Azure\nIndustrial SaaS, identity, licensing, governed AI.`;
     case "about":
       return portfolio.summary;
     case "skills":
       return skillGroups.map(({ title, skills }) => `${title}\n  ${skills.join(" · ")}`).join("\n\n");
     case "experience":
-      return career.map(({ period, company, title }) => `${period}\n  ${title} @ ${company}`).join("\n\n");
+      return career
+        .map(({ period, company, title, highlights }) => `${period}\n  ${title} @ ${company}\n  ${highlights[0] ?? ""}`)
+        .join("\n\n");
     case "systems":
       return systemAreas.map(({ heading, description }) => `${heading}\n  ${description}`).join("\n\n");
     case "education":
       return `${portfolio.education.degree}\n${portfolio.education.institution} (${portfolio.education.years})\n\n${portfolio.certification}\n${portfolio.languages.join("\n")}`;
     case "contact":
-      return `EMAIL    ${portfolio.email}\nLINKEDIN ${portfolio.linkedin}\nGITHUB   ${portfolio.github}`;
+      return `EMAIL    ${portfolio.email}\nPHONE    ${portfolio.phone}\nLINKEDIN ${portfolio.linkedin}\nGITHUB   ${portfolio.github}`;
     case "ls":
       return navigation.map(({ id }) => `${id}/`).join("    ");
     case "sudo":

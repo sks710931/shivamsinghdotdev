@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Shivam Kumar Singh — Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @page { size: A4; margin: 0; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { background: #0b1110; color: #e6eae4; font-family: "DM Sans", Arial, sans-serif; }
+      .page {
+        width: 210mm; height: 297mm; overflow: hidden; position: relative;
+        background: #0b1110; break-after: page;
+      }
+      .page:last-child { break-after: auto; }
+      .glow {
+        position: absolute; inset: 0; pointer-events: none;
+        background:
+          radial-gradient(circle at 86% 8%, rgba(188, 243, 164, 0.09), transparent 28%),
+          radial-gradient(circle at 0% 40%, rgba(23, 41, 32, 0.7), transparent 36%);
+      }
+      .pad { position: relative; height: 100%; padding: 12mm 14mm 11mm; display: flex; flex-direction: column; }
+      .top {
+        display: flex; justify-content: space-between; align-items: center;
+        font-family: "Space Mono", Consolas, monospace; font-size: 8.5px; letter-spacing: 0.14em;
+        color: #83b98a; border-bottom: 1px solid #26372f; padding-bottom: 4mm;
+      }
+      .top strong { color: #bcf3a4; font-weight: 700; }
+      .mark { display: flex; align-items: center; gap: 8px; color: #e6eae4; letter-spacing: 0.08em; }
+      .chev {
+        width: 18px; height: 18px; border: 1px solid #bcf3a4; border-radius: 3px;
+        display: grid; place-items: center; color: #bcf3a4; font-size: 11px;
+      }
+      h1 {
+        font-family: "Space Grotesk", Arial, sans-serif; font-weight: 700;
+        font-size: 48px; line-height: 0.84; letter-spacing: -0.055em; margin-top: 7mm; color: #f0f1e8;
+      }
+      h1 span { color: #bcf3a4; }
+      .role {
+        margin-top: 4.5mm; display: flex; align-items: center; gap: 8px;
+        font-family: "Space Mono", Consolas, monospace; font-size: 10.5px; letter-spacing: 0.14em; font-weight: 700;
+      }
+      .role i { width: 18px; height: 2px; background: #bcf3a4; display: block; }
+      .meta { margin-top: 4mm; display: flex; flex-wrap: wrap; gap: 5px 12px; font-family: "Space Mono", Consolas, monospace; font-size: 8px; color: #89968f; }
+      .meta b { color: #bcf3a4; font-weight: 400; }
+      .summary { margin-top: 6mm; font-size: 12px; line-height: 1.55; color: #c5d2c8; }
+      .quote { margin-top: 4.5mm; border-left: 2px solid #bcf3a4; background: #121d19; padding: 3.5mm 4.5mm; }
+      .quote small { font-family: "Space Mono", Consolas, monospace; font-size: 8px; letter-spacing: 0.12em; color: #bcf3a4; }
+      .quote p { margin-top: 1.6mm; font-family: "Space Grotesk", Arial, sans-serif; font-size: 13px; line-height: 1.4; font-weight: 500; }
+      .label { margin: 6mm 0 3mm; font-family: "Space Mono", Consolas, monospace; font-size: 8.5px; letter-spacing: 0.16em; color: #bcf3a4; }
+      .mods { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #304338; }
+      .mod { padding: 3.4mm 4mm; background: #101b16; border-right: 1px solid #304338; border-bottom: 1px solid #304338; }
+      .mod:nth-child(2n) { border-right: none; }
+      .mod:nth-child(n + 3) { border-bottom: none; }
+      .mod .id { font-family: "Space Mono", Consolas, monospace; font-size: 7.5px; color: #bcf3a4; letter-spacing: 0.08em; }
+      .mod h3 { margin-top: 1.2mm; font-family: "Space Grotesk", Arial, sans-serif; font-size: 13px; font-weight: 600; }
+      .mod p { margin-top: 1mm; font-size: 9.5px; line-height: 1.4; color: #9ba99f; }
+      .lead-block { margin-top: 5mm; }
+      .lead-block h2 { font-family: "Space Grotesk", Arial, sans-serif; font-size: 16px; font-weight: 600; }
+      .lead-block .sub { margin-top: 1mm; font-size: 11px; color: #9baa9e; }
+      ul.clean { list-style: none; margin-top: 2.5mm; }
+      ul.clean li { position: relative; padding: 0 0 1.8mm 3.5mm; font-size: 10.5px; line-height: 1.45; color: #c5d4c6; }
+      ul.clean li::before { content: "›"; position: absolute; left: 0; color: #bcf3a4; }
+      .foot {
+        margin-top: auto; padding-top: 3.5mm; border-top: 1px solid #26372f;
+        display: flex; justify-content: space-between;
+        font-family: "Space Mono", Consolas, monospace; font-size: 8px; letter-spacing: 0.08em; color: #65776d;
+      }
+      .plat { border-top: 1px solid #304338; padding: 4.2mm 0 3.6mm; }
+      .plat .k { font-family: "Space Mono", Consolas, monospace; font-size: 8px; letter-spacing: 0.12em; color: #bcf3a4; }
+      .plat h3 { margin-top: 1.4mm; font-family: "Space Grotesk", Arial, sans-serif; font-size: 18px; font-weight: 600; letter-spacing: -0.03em; }
+      .plat p { margin-top: 1.6mm; font-size: 11px; line-height: 1.48; color: #c5d2c8; }
+      .tech { margin-top: 2mm; font-family: "Space Mono", Consolas, monospace; font-size: 8px; color: #83b98a; }
+      .job { padding: 3.2mm 0; border-top: 1px solid #26372f; }
+      .job .when { font-family: "Space Mono", Consolas, monospace; font-size: 8px; color: #bcf3a4; letter-spacing: 0.06em; }
+      .job h3 { margin-top: 1mm; font-family: "Space Grotesk", Arial, sans-serif; font-size: 15px; font-weight: 600; }
+      .job .co { font-size: 11px; color: #c0d0bf; font-weight: 600; margin-top: 0.4mm; }
+      .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2mm 8mm; margin-top: 1mm; }
+      .skills div { font-size: 10px; line-height: 1.4; color: #c5d2c8; }
+      .skills b { display: block; font-family: "Space Mono", Consolas, monospace; font-size: 7.5px; letter-spacing: 0.08em; color: #bcf3a4; font-weight: 400; margin-bottom: 0.6mm; }
+      .bottom { margin-top: 4mm; display: grid; grid-template-columns: 1.3fr 1fr 0.7fr; gap: 5mm; border-top: 1px solid #304b34; padding-top: 4mm; }
+      .bottom small { font-family: "Space Mono", Consolas, monospace; font-size: 8px; letter-spacing: 0.1em; color: #bcf3a4; }
+      .bottom h3 { margin-top: 1.6mm; font-family: "Space Grotesk", Arial, sans-serif; font-size: 13px; font-weight: 600; line-height: 1.3; }
+      .bottom p { margin-top: 1mm; font-size: 10.5px; color: #b3c3b5; line-height: 1.4; }
+    </style>
+  </head>
+  <body>
+    <section class="page">
+      <div class="glow"></div>
+      <div class="pad">
+        <div class="top"><div class="mark"><span class="chev">></span> SHIVAM.SYS</div><div>PROFILE <strong>/ 01</strong></div></div>
+        <h1>SHIVAM<br /><span>SINGH</span>.</h1>
+        <div class="role"><i></i> STAFF SOFTWARE ENGINEER</div>
+        <div class="meta">
+          <span><b>NAME</b> Shivam Kumar Singh</span>
+          <span><b>LOC</b> Bengaluru, India · Remote</span>
+          <span><b>TEL</b> +91 8840330669</span>
+          <span><b>MAIL</b> singhshivam071093@gmail.com</span>
+          <span><b>IN</b> linkedin.com/in/sks71093</span>
+          <span><b>GH</b> github.com/sks710931</span>
+        </div>
+        <p class="summary">
+          Hands-on application architect with nearly ten years building enterprise products. Progressed from full-stack
+          implementation to technical direction across industrial SaaS, centralised identity, software licensing, and
+          governed AI. Promoted to Staff Engineer at Gleason after taking cross-product responsibility. Leads five
+          engineers and still does the design, the implementation, the reviews, and the hard debugging.
+        </p>
+        <div class="quote">
+          <small>/* ENGINEERING PRINCIPLE */</small>
+          <p>Shared platforms beat one-off implementations. The person who designed the boundary should still be able to debug it.</p>
+        </div>
+        <div class="label">02 / CAPABILITIES</div>
+        <div class="mods">
+          <article class="mod"><div class="id">MODULE_01</div><h3>Application architecture</h3><p>API boundaries, platform services, and desktop-to-browser modernisation.</p></article>
+          <article class="mod"><div class="id">MODULE_02</div><h3>Identity & security</h3><p>SSO, OIDC with PKCE, OpenIddict, MFA, and passkeys.</p></article>
+          <article class="mod"><div class="id">MODULE_03</div><h3>Product engineering</h3><p>C# / .NET, React, Redux, Entity Framework Core, SQL Server.</p></article>
+          <article class="mod"><div class="id">MODULE_04</div><h3>Cloud, data & AI</h3><p>Azure, Redis, Docker, governed agents, MQTT, and SAP.</p></article>
+        </div>
+        <div class="lead-block">
+          <div class="label" style="margin-top:0">GLEASON · STAFF, APRIL 2026 — PRESENT</div>
+          <h2>Technical direction, still hands-on.</h2>
+          <p class="sub">Senior Software Engineer, August 2021 — March 2026, before the promotion. Bengaluru · Remote.</p>
+          <ul class="clean">
+            <li>Lead five engineers across engineering SaaS, licensing, identity, and AI.</li>
+            <li>Define boundaries between React, .NET, SQL Server, Redis, identity, and containers.</li>
+            <li>Turn domain requirements into API contracts, epics, and independently deliverable work.</li>
+            <li>Replace product-specific auth and licensing with services more than one application can use.</li>
+          </ul>
+        </div>
+        <div class="foot"><span>SHIVAM KUMAR SINGH · STAFF SOFTWARE ENGINEER</span><span>01 / 03</span></div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="glow"></div>
+      <div class="pad">
+        <div class="top"><div class="mark"><span class="chev">></span> SYSTEMS.LOG</div><div>PROFILE <strong>/ 02</strong></div></div>
+        <div class="label">04 / SELECTED PLATFORMS · GLEASON</div>
+        <article class="plat">
+          <div class="k">01 / INDUSTRIAL SAAS</div>
+          <h3>KISSsoft, in the browser.</h3>
+          <p>KISSsoft supports standards-based design, optimisation, and verification of machine elements. Desktop-oriented workflows moved to React, Redux, ASP.NET Core, Entity Framework Core, and SQL Server. REST contracts keep calculation services behind the browser. The shared Gleason identity platform replaced a product-specific login with application-scoped authorisation.</p>
+          <div class="tech">React · TypeScript · Redux · ASP.NET Core · EF Core · SQL Server · Docker</div>
+        </article>
+        <article class="plat">
+          <div class="k">02 / LICENSING</div>
+          <h3>KISSsoft License Manager.</h3>
+          <p>Cloud licensing for floating and standalone licences, entitlements, usage, and administration. Fast-changing runtime state sits in Redis. Customers, entitlements, and configuration sit in SQL Server. Desktop and cloud clients share acquisition, validation, allocation, and release, with Blazor for administration.</p>
+          <div class="tech">C# · ASP.NET Core · Blazor · EF Core · SQL Server · Redis · Docker</div>
+        </article>
+        <article class="plat">
+          <div class="k">03 / IDENTITY</div>
+          <h3>Enterprise authentication and SSO.</h3>
+          <p>AuthServer is the shared authority for Gleason applications. Browsers use OpenID Connect authorisation code with PKCE. Services use OAuth 2.0 client credentials. Users, applications, roles, and claims are consolidated. Hardening includes email OTP, TOTP, trusted devices, Redis rate limits, audit, WebAuthn/FIDO2 passkeys, and Azure Key Vault.</p>
+          <div class="tech">.NET 9 · OpenIddict · OIDC · EF Core · Redis · Key Vault · WebAuthn · Docker</div>
+        </article>
+        <article class="plat">
+          <div class="k">04 / GOVERNED AI</div>
+          <h3>GEMS — agents with a human gate.</h3>
+          <p>Co-designed with the Principal Architect for industrial operations. Approval gates, resource controls, immutable audit, independent review, and recovery for long-running workflows. A service-generation pipeline supports deterministic, interactive, and autonomous modes. SAP OData and MQTT/Mosquitto connect enterprise data with the shop floor. Unit and integration tests cover the platform and generated services.</p>
+          <div class="tech">.NET 8 · Microsoft.Extensions.AI · MQTT · PostgreSQL · pgvector · SAP OData · xUnit</div>
+        </article>
+        <div class="foot"><span>ARCHITECTURE LEVEL · NO PRIVATE METRICS</span><span>02 / 03</span></div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="glow"></div>
+      <div class="pad">
+        <div class="top"><div class="mark"><span class="chev">></span> HISTORY.LOG</div><div>PROFILE <strong>/ 03</strong></div></div>
+        <div class="label">03 / EARLIER</div>
+        <article class="job">
+          <div class="when">NOV 2019 — AUG 2021</div>
+          <h3>Software Engineer I</h3>
+          <div class="co">DealerSocket, a Solera company · Bengaluru</div>
+          <ul class="clean">
+            <li>Automotive CRM across React, TypeScript, Angular, C#, ASP.NET Web API, Web Forms, VB.NET, and SQL Server.</li>
+            <li>Moved important features to React while older Web Forms modules stayed integrated.</li>
+            <li>Scrum Master for planning, refinement, and reviews. Star of the Month more than once.</li>
+          </ul>
+        </article>
+        <article class="job">
+          <div class="when">OCT 2016 — NOV 2019</div>
+          <h3>Associate Software Engineer</h3>
+          <div class="co">Allscripts Healthcare Solutions · Bengaluru</div>
+          <ul class="clean">
+            <li>Practice-management workflows in C#, VB.NET, VB6, T-SQL, SQL Server, and Crystal Reports.</li>
+            <li>Modernised selected paths with React, Angular, .NET Core, Docker, and Azure SQL.</li>
+            <li>Trained engineers on Azure, Web APIs, Entity Framework, and Angular. Spot Award, CLEAR Award, Innovation Champions Club.</li>
+          </ul>
+        </article>
+        <div class="label">STACK</div>
+        <div class="skills">
+          <div><b>LANGUAGES</b>C#, TypeScript, JavaScript, T-SQL</div>
+          <div><b>BACKEND</b>.NET 8/9, ASP.NET Core, OpenIddict, EF Core, Blazor</div>
+          <div><b>FRONTEND</b>React, Redux, Angular, TypeScript</div>
+          <div><b>IDENTITY</b>OAuth 2.0, OIDC, PKCE, JWT, MFA, WebAuthn</div>
+          <div><b>DATA</b>SQL Server, Azure SQL, PostgreSQL, Redis, pgvector</div>
+          <div><b>CLOUD</b>Azure, Key Vault, DevOps, ACR, Docker, App Insights</div>
+          <div><b>AI / INDUSTRIAL</b>Governed agents, MQTT, Mosquitto, SAP OData</div>
+          <div><b>EARLIER</b>VB.NET, VB6, Web Forms, Crystal Reports</div>
+        </div>
+        <div class="bottom">
+          <div>
+            <small>$ cat education.txt</small>
+            <h3>B.E. Computer Science and Engineering</h3>
+            <p>Annamalai University, Tamil Nadu<br />2012 — 2016 · CGPA 7.7/10</p>
+          </div>
+          <div>
+            <small>$ cat certification.txt</small>
+            <h3>Microsoft Certified: Azure Fundamentals</h3>
+            <p>Azure / foundational</p>
+          </div>
+          <div>
+            <small>$ cat languages.txt</small>
+            <h3>English · Hindi</h3>
+            <p>Full professional · Native</p>
+          </div>
+        </div>
+        <div class="foot"><span>SINGHSHIVAM071093@GMAIL.COM · +91 8840330669</span><span>03 / 03</span></div>
+      </div>
+    </section>
+  </body>
+</html>
