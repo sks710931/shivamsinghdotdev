@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import {
   ArrowDown,
   ArrowRight,
@@ -84,7 +84,22 @@ export default function App() {
     setMobileMenuOpen(false);
     setActive(id);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const nextHash = `#${id}`;
+    if (window.location.hash !== nextHash) {
+      window.history.pushState(null, "", nextHash);
+    }
   };
+
+  const followSection = (event: MouseEvent<HTMLAnchorElement>, id: NavId): void => {
+    event.preventDefault();
+    navigate(id);
+  };
+
+  useEffect(() => {
+    const id = window.location.hash.slice(1);
+    if (!navigation.some((item) => item.id === id)) return;
+    document.getElementById(id)?.scrollIntoView({ block: "start" });
+  }, []);
 
   const copyEmail = async (): Promise<void> => {
     try {
@@ -103,7 +118,7 @@ export default function App() {
       </a>
       <header className="site-header">
         <div className="container site-header__inner">
-          <button className="site-logo" type="button" onClick={() => navigate("home")} aria-label="shivamsingh.dev — return to top">
+          <a className="site-logo" href="#home" onClick={(event) => followSection(event, "home")} aria-label="shivamsingh.dev — return to top">
             <span className="site-logo__symbol">
               <ChevronRight size={19} strokeWidth={3} aria-hidden="true" />
               <span className="site-logo__underscore" />
@@ -111,36 +126,32 @@ export default function App() {
             <span>
               shivamsingh<span className="site-logo__muted">.dev</span>
             </span>
-          </button>
+          </a>
           <nav className="header-nav" aria-label="Primary navigation">
-            <button
-              aria-current={active === "about" ? "location" : undefined}
-              onClick={() => navigate("about")}
-              type="button"
-            >
+            <a href="#about" aria-current={active === "about" ? "location" : undefined} onClick={(event) => followSection(event, "about")}>
               about
-            </button>
-            <button
+            </a>
+            <a
+              href="#expertise"
               aria-current={active === "expertise" ? "location" : undefined}
-              onClick={() => navigate("expertise")}
-              type="button"
+              onClick={(event) => followSection(event, "expertise")}
             >
               expertise
-            </button>
-            <button
+            </a>
+            <a
+              href="#experience"
               aria-current={active === "experience" ? "location" : undefined}
-              onClick={() => navigate("experience")}
-              type="button"
+              onClick={(event) => followSection(event, "experience")}
             >
               experience
-            </button>
-            <button
+            </a>
+            <a
+              href="#systems"
               aria-current={active === "systems" ? "location" : undefined}
-              onClick={() => navigate("systems")}
-              type="button"
+              onClick={(event) => followSection(event, "systems")}
             >
               work
-            </button>
+            </a>
           </nav>
           <div className="site-header__actions">
             <button
@@ -171,16 +182,16 @@ export default function App() {
         {mobileMenuOpen && (
           <nav className="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
             {navigation.map(({ id, number, label }) => (
-              <button
-                type="button"
+              <a
                 key={id}
-                onClick={() => navigate(id)}
+                href={`#${id}`}
+                onClick={(event) => followSection(event, id)}
                 aria-current={active === id ? "location" : undefined}
               >
                 <span>{number}</span>
                 {label}
                 <ArrowUpRight size={15} aria-hidden="true" />
-              </button>
+              </a>
             ))}
           </nav>
         )}
@@ -226,9 +237,9 @@ export default function App() {
                 <span>/SECURITY</span>
               </div>
               <div className="hero__actions">
-                <button className="button button--primary" type="button" onClick={() => navigate("systems")}>
+                <a className="button button--primary" href="#systems" onClick={(event) => followSection(event, "systems")}>
                   Explore my work <ArrowUpRight size={17} aria-hidden="true" />
-                </button>
+                </a>
                 <a className="button button--secondary" href={portfolio.resumeUrl} target="_blank" rel="noopener noreferrer">
                   Download resume <Download size={16} aria-hidden="true" />
                 </a>
@@ -255,9 +266,9 @@ export default function App() {
             </div>
           </section>
           <div className="hero__bottom-rule">
-            <button type="button" onClick={() => navigate("about")}>
+            <a href="#about" onClick={(event) => followSection(event, "about")}>
               SCROLL TO DECODE <ArrowDown size={15} aria-hidden="true" />
-            </button>
+            </a>
             <span>© {new Date().getFullYear()} SHIVAM SINGH</span>
           </div>
         </div>
@@ -446,13 +457,13 @@ export default function App() {
           <div className="container details-grid">
             <div>
               <span className="details-grid__label">$ cat education.txt</span>
-              <h3>{portfolio.education.degree}</h3>
+              <h2>{portfolio.education.degree}</h2>
               <p>{portfolio.education.institution}</p>
               <span>{portfolio.education.years}</span>
             </div>
             <div>
               <span className="details-grid__label">$ cat languages.txt</span>
-              <h3>{portfolio.languages.join(" · ")}</h3>
+              <h2>{portfolio.languages.join(" · ")}</h2>
               <p>{portfolio.location}</p>
             </div>
           </div>
@@ -488,11 +499,11 @@ export default function App() {
                   </button>
                 </div>
               </div>
-              <div className="contact-panel__bottom">
-                <span>MAILTO::{portfolio.email}</span>
-                <span>TEL::{portfolio.phone}</span>
+              <address className="contact-panel__bottom">
+                <a href={`mailto:${portfolio.email}`}>MAILTO::{portfolio.email}</a>
+                <a href="tel:+918840330669">TEL::{portfolio.phone}</a>
                 <span>STATUS::READY_TO_CONNECT</span>
-              </div>
+              </address>
             </div>
           </div>
         </section>
@@ -503,11 +514,18 @@ export default function App() {
             <span>{">_"}</span> Designed & built by Shivam Singh.
             <small>© {new Date().getFullYear()} · No unnecessary complexity.</small>
           </div>
-          <div className="footer__links">
-            <a href={portfolio.github} target="_blank" rel="noopener noreferrer">
+          <nav className="footer__links" aria-label="Footer">
+            {navigation
+              .filter((item) => item.id !== "home")
+              .map((item) => (
+                <a key={item.id} href={`#${item.id}`} onClick={(event) => followSection(event, item.id)}>
+                  {item.label}
+                </a>
+              ))}
+            <a href={portfolio.github} target="_blank" rel="me noopener noreferrer">
               <Github size={14} aria-hidden="true" /> GitHub <ExternalLink size={13} aria-hidden="true" />
             </a>
-            <a href={portfolio.linkedin} target="_blank" rel="noopener noreferrer">
+            <a href={portfolio.linkedin} target="_blank" rel="me noopener noreferrer">
               LinkedIn <ExternalLink size={13} aria-hidden="true" />
             </a>
             <a href={`mailto:${portfolio.email}`}>
@@ -516,10 +534,10 @@ export default function App() {
             <a href={portfolio.resumeUrl} target="_blank" rel="noopener noreferrer">
               Resume <ArrowRight size={14} aria-hidden="true" />
             </a>
-          </div>
-          <button className="footer__top" type="button" onClick={() => navigate("home")}>
+          </nav>
+          <a className="footer__top" href="#home" onClick={(event) => followSection(event, "home")}>
             BACK TO TOP ↑
-          </button>
+          </a>
         </div>
       </footer>
       <div className="mobile-bottom-hint" aria-hidden="true">

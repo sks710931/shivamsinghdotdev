@@ -85,9 +85,9 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .site-logo__underscore { width: 9px; height: 2px; background: var(--accent); align-self: flex-end; margin: 0 4px 7px -3px; }
 .site-logo__muted { color: #798a80; }
 .header-nav { display: flex; align-items: center; gap: 35px; }
-.header-nav button { background: transparent; color: #9eaca3; font-size: 11px; font-family: var(--mono); border: none; letter-spacing: .03em; padding: 12px 0; transition: color .15s; }
-.header-nav button:hover, .header-nav button[aria-current="location"] { color: var(--accent); }
-.header-nav button::before { content: '/'; color: var(--muted2); margin-right: 3px; }
+.header-nav a { background: transparent; color: #9eaca3; font-size: 11px; font-family: var(--mono); border: none; letter-spacing: .03em; padding: 12px 0; transition: color .15s; }
+.header-nav a:hover, .header-nav a[aria-current="location"] { color: var(--accent); }
+.header-nav a::before { content: '/'; color: var(--muted2); margin-right: 3px; }
 .site-header__actions { display: flex; align-items: center; gap: 15px; }
 .palette-button { background: transparent; width: 37px; height: 37px; border: 1px solid var(--line); border-radius: 6px; display: grid; place-items: center; color: var(--muted); }
 .palette-button:hover { border-color: var(--accent); color: var(--accent); }
@@ -154,7 +154,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .terminal__shortcuts button:hover { color: var(--accent); border-color: var(--accent); }
 .hero__terminal-bottom { display: flex; justify-content: space-between; gap: 12px; margin-top: 15px; font: 9px var(--mono); color: #728775; }
 .hero__bottom-rule { border-top: 1px solid #304137; display: flex; justify-content: space-between; align-items: center; padding: 21px 0 37px; }
-.hero__bottom-rule button { border: none; background: transparent; padding: 0; color: var(--accent); display: inline-flex; gap: 12px; align-items: center; font: 9px var(--mono); letter-spacing: .08em; }
+.hero__bottom-rule a { border: none; background: transparent; padding: 0; color: var(--accent); display: inline-flex; gap: 12px; align-items: center; font: 9px var(--mono); letter-spacing: .08em; }
 .hero__bottom-rule span { color: #697a6d; font: 9px var(--mono); }
 .section { position: relative; scroll-margin-top: 90px; }
 .section__grid { display: grid; grid-template-columns: minmax(0, .79fr) minmax(0, 1.21fr); gap: clamp(50px, 10vw, 170px); }
@@ -238,7 +238,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .details-grid > div { border-top: 1px solid #304b34; padding: 25px 0 0; }
 .details-grid__label { color: var(--accent); font: 10px var(--mono); }
-.details-grid h3 { color: #e4efe1; font: 500 21px/1.4 var(--display); margin: 21px 0 8px; }
+.details-grid h2 { color: #e4efe1; font: 500 21px/1.4 var(--display); margin: 21px 0 8px; }
 .details-grid p { color: #b3c3b5; font-size: 13px; margin: 0 0 11px; }
 .details-grid > div > span:last-child { color: #778e7d; font: 10px var(--mono); }
 .contact-section { padding-bottom: 112px; scroll-margin-top: 110px; }
@@ -255,13 +255,14 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .button--dark:hover { transform: translateY(-2px); }
 .button--dark-outline { background: transparent; border-color: #426844; color: #1c391f; }
 .button--dark-outline:hover { background: #b2e19c; }
-.contact-panel__bottom { display: flex; justify-content: space-between; gap: 20px; padding: 18px 28px; border-top: 1px solid #24472555; color: #476347; font: 9px var(--mono); overflow-wrap: anywhere; }
+.contact-panel__bottom { display: flex; justify-content: space-between; gap: 20px; padding: 18px 28px; border-top: 1px solid #24472555; color: #476347; font: 9px var(--mono); font-style: normal; overflow-wrap: anywhere; }
+.contact-panel__bottom a:hover { color: #d8f5cf; }
 .footer { border-top: 1px solid #293a2e; background: #0c130f; }
 .footer__inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; min-height: 122px; }
 .footer__brand { color: #bccdbc; font-size: 13px; display: flex; flex-direction: column; gap: 10px; }
 .footer__brand > span { color: var(--accent); position: absolute; transform: translateX(-31px); font: 700 17px var(--mono); }
 .footer__brand small { color: #718471; font: 9px var(--mono); }
-.footer__links { display: flex; flex-wrap: wrap; gap: 25px; }
+.footer__links { display: flex; flex-wrap: wrap; gap: 14px 22px; max-width: 760px; }
 .footer__links a { display: inline-flex; align-items: center; gap: 7px; color: #b9cbbc; font: 10px var(--mono); }
 .footer__links a:hover { color: var(--accent); }
 .footer__top { color: var(--accent); font: 9px var(--mono); background: transparent; border: none; white-space: nowrap; }
@@ -312,9 +313,9 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .palette-button { width: 34px; height: 34px; }
   .mobile-menu-toggle { width: 34px; height: 34px; display: grid; place-items: center; background: transparent; color: var(--accent); border: 1px solid var(--line); border-radius: 4px; }
   .mobile-nav { display: grid; padding: 7px 18px 16px; background: #0f1a13; border-top: 1px solid var(--line); }
-  .mobile-nav button { background: transparent; color: #dfebdd; border: 0; border-bottom: 1px solid #304338; padding: 17px 0; text-align: left; display: flex; align-items: center; gap: 16px; font: 13px var(--mono); }
-  .mobile-nav button span { color: var(--accent); font-size: 10px; }
-  .mobile-nav button svg { margin-left: auto; }
+  .mobile-nav a { background: transparent; color: #dfebdd; border: 0; border-bottom: 1px solid #304338; padding: 17px 0; text-align: left; display: flex; align-items: center; gap: 16px; font: 13px var(--mono); }
+  .mobile-nav a span { color: var(--accent); font-size: 10px; }
+  .mobile-nav a svg { margin-left: auto; }
   .system-strip { padding: 17px 0; font-size: 8px; }
   .system-strip__middle, .system-strip > span:last-child { display: none; }
   .hero { padding: 65px 0 55px; gap: 66px; }
