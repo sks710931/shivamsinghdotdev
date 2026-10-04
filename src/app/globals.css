@@ -379,3 +379,8 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+.not-found { min-height: 100vh; display: grid; align-content: center; width: min(640px, calc(100% - 40px)); margin: 0 auto; }
+.not-found h1 { font: 700 clamp(40px, 8vw, 64px)/1.05 var(--display); letter-spacing: -.04em; margin: 12px 0; }
+.not-found p { color: var(--muted); line-height: 1.6; }
+.not-found a { color: var(--accent); }
+.not-found__code { font-family: var(--mono); letter-spacing: .08em; color: var(--accent); font-size: 12px; }

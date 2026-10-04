@@ -7,19 +7,19 @@ The job experience timeline and terminal `experience` command use the exact role
 ## Run
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 ## Build
 
 ```bash
-npm run typecheck
-npm run build
-npm run preview
+pnpm typecheck
+pnpm build
+pnpm start
 ```
 
-Deploy `dist/` to any static host. No backend.
+The site is a Next.js App Router application. The home page is rendered on the server for every request, then the browser hydrates the interactive terminal, navigation, and theme controls.
 
 ## Terminal
 
@@ -31,7 +31,8 @@ Up/down walks history. Tab autocompletes. The terminal only runs these commands 
 
 - `src/data/portfolio.ts` — profile, career, stack
 - `src/components/Terminal.tsx` — command interpreter
-- `src/App.tsx` — page
+- `src/App.tsx` — page interface
+- `src/app/` — Next.js routes, metadata, sitemap, and robots rules
 - `public/resume.pdf` — supplied resume with the GEMS collaboration wording corrected, linked from the page and terminal
 - `public/profile.pdf` — printable portfolio PDF with corrected GEMS collaboration wording, retained for existing direct links
 
@@ -39,11 +40,11 @@ Up/down walks history. Tab autocompletes. The terminal only runs these commands 
 
 Live site: https://shivamsingh.dev (redirects to https://www.shivamsingh.dev).
 
-Vercel project: `shivamsinghdotdev` in `cryptobabys-projects`. The Vite build settings are in `vercel.json`; the production output is `dist/`. Both custom-domain hostnames are assigned to this project.
+Vercel project: `shivamsinghdotdev` in `cryptobabys-projects`. Vercel builds it as a Next.js app. `vercel.json` permanently redirects the apex host to `https://www.shivamsingh.dev/`. Both custom-domain hostnames are assigned to this project.
 
 ## Social previews
 
-`index.html` includes static Open Graph and Twitter large-image metadata. Wide is the preferred link preview; a square alternative is also declared in Open Graph. Twitter explicitly uses the wide card. Portrait and story versions are downloadable assets for social posts; each uses a layout suited to its proportions.
+`src/app/layout.tsx` sets the Open Graph and Twitter large-image metadata. Wide is the preferred link preview; a square alternative is also declared in Open Graph. Twitter explicitly uses the wide card. Portrait and story versions are downloadable assets for social posts; each uses a layout suited to its proportions.
 
 | Format | File | Pixels |
 | --- | --- | --- |
