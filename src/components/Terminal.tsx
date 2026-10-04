@@ -47,12 +47,12 @@ const helpText = [
   "  about       read the longer story",
   "  skills      explore the engineering stack",
   "  experience  show the career timeline",
-  "  systems     show the platforms I have shipped",
-  "  education   education and certification",
+  "  systems     explore my project work",
+  "  education   education and languages",
   "  contact     find my email",
   "  linkedin    open LinkedIn profile",
   "  github      open GitHub profile",
-  "  resume      open the profile PDF",
+  "  resume      open my resume",
   "  theme       toggle the terminal palette",
   "  ls          list portfolio sections",
   "  clear       clear terminal output",
@@ -72,12 +72,16 @@ function getCommandResponse(command: string): string | null {
       return skillGroups.map(({ title, skills }) => `${title}\n  ${skills.join(" · ")}`).join("\n\n");
     case "experience":
       return career
-        .map(({ period, company, title, highlights }) => `${period}\n  ${title} @ ${company}\n  ${highlights[0] ?? ""}`)
+        .map(({ period, company, title, location, highlights }) => [
+          `${period}\n${title} @ ${company}`,
+          ...(location ? [location] : []),
+          ...highlights.map((highlight) => `  • ${highlight}`),
+        ].join("\n"))
         .join("\n\n");
     case "systems":
-      return systemAreas.map(({ heading, description }) => `${heading}\n  ${description}`).join("\n\n");
+      return systemAreas.map(({ heading, description }) => `${heading}\n${description}`).join("\n\n");
     case "education":
-      return `${portfolio.education.degree}\n${portfolio.education.institution} (${portfolio.education.years})\n\n${portfolio.certification}\n${portfolio.languages.join("\n")}`;
+      return `${portfolio.education.degree}\n${portfolio.education.institution} (${portfolio.education.years})\n\n${portfolio.languages.join("\n")}`;
     case "contact":
       return `EMAIL    ${portfolio.email}\nPHONE    ${portfolio.phone}\nLINKEDIN ${portfolio.linkedin}\nGITHUB   ${portfolio.github}`;
     case "ls":
@@ -127,8 +131,8 @@ export function Terminal({ onNavigate, theme, onToggleTheme }: TerminalProps) {
       window.open(portfolio.github, "_blank", "noopener,noreferrer");
       response = "Opening GitHub profile in a new tab...";
     } else if (command === "resume") {
-      window.open("/profile.pdf", "_blank", "noopener,noreferrer");
-      response = "Opening the profile PDF...";
+      window.open(portfolio.resumeUrl, "_blank", "noopener,noreferrer");
+      response = "Opening my resume...";
     } else if (command === "theme") {
       onToggleTheme();
       response = `Theme switched to ${theme === "green" ? "amber" : "green"}.`;

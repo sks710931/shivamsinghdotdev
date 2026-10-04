@@ -103,13 +103,13 @@ export default function App() {
       </a>
       <header className="site-header">
         <div className="container site-header__inner">
-          <button className="site-logo" type="button" onClick={() => navigate("home")} aria-label="Return to top">
+          <button className="site-logo" type="button" onClick={() => navigate("home")} aria-label="shivamsingh.dev — return to top">
             <span className="site-logo__symbol">
               <ChevronRight size={19} strokeWidth={3} aria-hidden="true" />
               <span className="site-logo__underscore" />
             </span>
             <span>
-              shivam<span className="site-logo__muted">.sys</span>
+              shivamsingh<span className="site-logo__muted">.dev</span>
             </span>
           </button>
           <nav className="header-nav" aria-label="Primary navigation">
@@ -229,8 +229,8 @@ export default function App() {
                 <button className="button button--primary" type="button" onClick={() => navigate("systems")}>
                   Explore my work <ArrowUpRight size={17} aria-hidden="true" />
                 </button>
-                <a className="button button--secondary" href="/profile.pdf" target="_blank" rel="noopener noreferrer">
-                  Profile PDF <Download size={16} aria-hidden="true" />
+                <a className="button button--secondary" href={portfolio.resumeUrl} target="_blank" rel="noopener noreferrer">
+                  Download resume <Download size={16} aria-hidden="true" />
                 </a>
               </div>
               <div className="hero__location">
@@ -275,19 +275,16 @@ export default function App() {
               <p className="about-copy__lead">
                 I work on the platforms that more than one product has to share.
               </p>
+              <p>{portfolio.summary}</p>
               <p>
-                I'm <strong>Shivam Kumar Singh</strong>, a Staff Software Engineer at{" "}
-                <strong>Gleason Corporation</strong>. Nearly ten years in, the work is industrial SaaS, centralised
-                identity, software licensing, and governed AI — still hands-on, now also leading five engineers.
+                My work includes <strong>KISSsoft</strong> in the browser, its cloud license manager, and a shared
+                authentication platform built with OpenIddict. I work closely with the Principal Architect on{" "}
+                <strong>GEMS AI</strong>, contributing to agent execution, industrial integrations, and service generation.
               </p>
               <p>
-                The recent platforms: <strong>KISSsoft</strong> in the browser, a cloud license manager that keeps
-                runtime state in Redis, an OpenIddict single sign-on authority, and <strong>GEMS</strong>, an agent
-                system that does not act without a person.
-              </p>
-              <p>
-                Before Gleason I shipped automotive CRM at DealerSocket and healthcare practice-management software at
-                Allscripts, including the first moves of that estate onto React, Docker, and Azure.
+                Before Gleason, I built automotive CRM features at DealerSocket and served as Scrum Master. I started
+                at Allscripts, working on healthcare practice-management software and modernising selected legacy
+                features with React, Angular, .NET Core, Docker, and Azure SQL.
               </p>
               <div className="about-copy__quote">
                 <span>{"/* ENGINEERING PRINCIPLE */"}</span>
@@ -323,7 +320,7 @@ export default function App() {
                 label="CAPABILITIES / STACK"
                 id="expertise-heading"
                 title="What I bring to the table"
-                subtitle="Not a list of buzzwords. The disciplines and tools I use to solve production engineering problems."
+                subtitle="The tools I work with and the responsibilities I’ve taken on across enterprise products."
               />
               <div className="section__intro-corner">[ CORE_MODULES: 04 ]</div>
             </div>
@@ -366,7 +363,7 @@ export default function App() {
                 label="CAREER TIMELINE"
                 id="experience-heading"
                 title="Built over time"
-                subtitle="Industrial SaaS, licensing, identity, and healthcare products. Roles first, then the systems under them."
+                subtitle="My roles at Gleason, DealerSocket, and Allscripts, alongside freelance Solidity development."
               />
               <p className="experience-section__hint">// SCROLL THROUGH THE LOGS ↓</p>
             </div>
@@ -384,17 +381,19 @@ export default function App() {
                   <div className="career-item__company">
                     {entry.company} {entry.location && <span>↗ {entry.location}</span>}
                   </div>
-                  <p>{entry.description}</p>
+                  {entry.description && <p>{entry.description}</p>}
                   <ul className="career-item__points">
                     {entry.highlights.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
-                  <ul className="career-item__tags">
-                    {entry.tags.map((tag) => (
-                      <li key={tag}>{tag}</li>
-                    ))}
-                  </ul>
+                  {entry.tags.length > 0 && (
+                    <ul className="career-item__tags">
+                      {entry.tags.map((tag) => (
+                        <li key={tag}>{tag}</li>
+                      ))}
+                    </ul>
+                  )}
                 </article>
               ))}
               <div className="career-list__origin">
@@ -412,8 +411,8 @@ export default function App() {
                 number="04"
                 label="SELECTED PLATFORMS"
                 id="systems-heading"
-                title="Systems I have actually shipped"
-                subtitle="Named work from Gleason. Descriptions stay at the architecture level — no private diagrams, metrics, or customer data."
+                title="What I’ve worked on"
+                subtitle="Four platforms from my work at Gleason, covering browser-based engineering, licensing, shared identity, and governed AI."
               />
               <div className="section__intro-corner">[ SYSTEMS: 04 ]</div>
             </div>
@@ -443,7 +442,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="section details-section" aria-label="Education and certification">
+        <section className="section details-section" aria-label="Education and languages">
           <div className="container details-grid">
             <div>
               <span className="details-grid__label">$ cat education.txt</span>
@@ -452,10 +451,9 @@ export default function App() {
               <span>{portfolio.education.years}</span>
             </div>
             <div>
-              <span className="details-grid__label">$ cat certification.txt</span>
-              <h3>{portfolio.certification}</h3>
-              <p>Microsoft</p>
-              <span>AZURE / FOUNDATIONAL</span>
+              <span className="details-grid__label">$ cat languages.txt</span>
+              <h3>{portfolio.languages.join(" · ")}</h3>
+              <p>{portfolio.location}</p>
             </div>
           </div>
         </section>
@@ -515,8 +513,8 @@ export default function App() {
             <a href={`mailto:${portfolio.email}`}>
               <Mail size={14} aria-hidden="true" /> Email
             </a>
-            <a href="/profile.pdf" target="_blank" rel="noopener noreferrer">
-              Profile PDF <ArrowRight size={14} aria-hidden="true" />
+            <a href={portfolio.resumeUrl} target="_blank" rel="noopener noreferrer">
+              Resume <ArrowRight size={14} aria-hidden="true" />
             </a>
           </div>
           <button className="footer__top" type="button" onClick={() => navigate("home")}>

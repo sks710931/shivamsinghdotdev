@@ -2,7 +2,7 @@
 
 Terminal-inspired personal portfolio for [Shivam Singh](https://github.com/sks710931), Staff Software Engineer.
 
-Content is drawn from the LinkedIn profile export. Engineering focus areas describe domains of experience — they are not published client case studies.
+The job experience timeline and terminal `experience` command use the exact roles, dates, responsibilities, and core technologies from the supplied `Profile (1).pdf` LinkedIn export. Project summaries, skills, and education use the earlier supplied resume, with the installation identity harness updated from follow-up context. The project cards use conversational summaries. Gleason project contributions are grouped across the tenure because the resume does not date each project separately.
 
 ## Run
 
@@ -32,4 +32,28 @@ Up/down walks history. Tab autocompletes. The terminal only runs these commands 
 - `src/data/portfolio.ts` — profile, career, stack
 - `src/components/Terminal.tsx` — command interpreter
 - `src/App.tsx` — page
-- `public/profile.pdf` — original LinkedIn export
+- `public/resume.pdf` — supplied resume with the GEMS collaboration wording corrected, linked from the page and terminal
+- `public/profile.pdf` — printable portfolio PDF with corrected GEMS collaboration wording, retained for existing direct links
+
+## Deployment
+
+Live site: https://shivamsingh.dev (redirects to https://www.shivamsingh.dev).
+
+Vercel project: `shivamsinghdotdev` in `cryptobabys-projects`. The Vite build settings are in `vercel.json`; the production output is `dist/`. Both custom-domain hostnames are assigned to this project.
+
+## Social previews
+
+`index.html` includes static Open Graph and Twitter large-image metadata. Wide is the preferred link preview; a square alternative is also declared in Open Graph. Twitter explicitly uses the wide card. Portrait and story versions are downloadable assets for social posts; each uses a layout suited to its proportions.
+
+| Format | File | Pixels |
+| --- | --- | --- |
+| Wide | `public/social-preview.png` | 1734 × 907 |
+| Square | `public/social-preview-square.png` | 1254 × 1254 |
+| Portrait | `public/social-preview-portrait.png` | 1122 × 1402 |
+| Story | `public/social-preview-story.png` | 941 × 1672 |
+
+All files are PNGs served directly from the canonical `https://www.shivamsingh.dev/` domain without JavaScript or authentication. Open Graph dimensions match the actual images.
+
+## Fonts and audits
+
+The app serves DM Sans, Space Grotesk, and Space Mono locally from `public/fonts/`, with the upstream SIL Open Font License notices beside the WOFF2 files. Critical fonts are preloaded; the app does not request Google Fonts during page rendering. Run Lighthouse against a production build in a clean browser profile with extensions disabled.

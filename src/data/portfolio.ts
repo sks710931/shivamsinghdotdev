@@ -18,7 +18,7 @@ export interface CareerEntry {
   readonly company: string;
   readonly title: string;
   readonly location?: string;
-  readonly description: string;
+  readonly description?: string;
   readonly highlights: readonly string[];
   readonly tags: readonly string[];
   readonly isCurrent?: boolean;
@@ -42,15 +42,15 @@ export const portfolio = {
   linkedin: "https://www.linkedin.com/in/sks71093/",
   github: "https://github.com/sks710931",
   summary:
-    "Staff Software Engineer and hands-on application architect with nearly ten years building enterprise products. At Gleason I own technical direction across industrial SaaS, centralised identity, software licensing, and governed AI — still writing the code, and leading five engineers.",
+    "I’m a Staff Software Engineer with nearly ten years of experience building and modernising enterprise products. At Gleason, I lead five engineers and help shape our industrial SaaS, identity, licensing, and governed AI platforms. I’m still hands-on with design, implementation, code reviews, and troubleshooting.",
   philosophy:
-    "Shared platforms beat one-off implementations. Identity, licensing, and API boundaries should be reusable, and the engineer who designed them should still be able to debug them.",
+    "I focus on clear API boundaries, shared identity and licensing services, and software the team can maintain. I work through design trade-offs with engineers and stay involved when production issues need attention.",
   education: {
     institution: "Annamalai University, Tamil Nadu",
-    degree: "B.E. Computer Science and Engineering",
+    degree: "Bachelor of Engineering in Computer Science and Engineering",
     years: "2012 — 2016 · CGPA 7.7/10",
   },
-  certification: "Microsoft Certified: Azure Fundamentals",
+  resumeUrl: "/resume.pdf",
   languages: ["English", "Hindi"],
 } as const;
 
@@ -66,87 +66,113 @@ export const navigation: readonly NavigationItem[] = [
 export const skillGroups: readonly SkillGroup[] = [
   {
     id: "01",
-    title: "Application architecture",
-    description: "Platform boundaries, API contracts, and turning domain workflows into software other teams can ship.",
-    skills: ["Platform engineering", "Industrial SaaS", "API contracts", "Legacy modernisation"],
+    title: "Architecture & technical leadership",
+    description: "I turn product requirements into API contracts and delivery plans, and help engineers work through design decisions and production problems.",
+    skills: ["Application architecture", "Platform engineering", "REST APIs", "Enterprise integration", "Code reviews", "Mentoring", "Agile delivery", "Legacy modernisation"],
   },
   {
     id: "02",
-    title: "Identity & security",
-    description: "A shared sign-on authority instead of a login built into every product.",
-    skills: ["OIDC + PKCE", "OAuth 2.0", "OpenIddict", "MFA / passkeys"],
+    title: "Identity & application security",
+    description: "Shared sign-on and access control for enterprise applications, covering browser clients, backend services, and protected APIs.",
+    skills: ["OpenIddict", "ASP.NET Core Identity", "OAuth 2.0", "OpenID Connect / PKCE", "JWT", "SSO", "Roles & claims", "MFA / TOTP", "WebAuthn / FIDO2", "Passkeys"],
   },
   {
     id: "03",
-    title: "Product engineering",
-    description: "Hands-on delivery across the browser, the API, and the database.",
-    skills: ["C# / .NET", "React / Redux", "EF Core", "SQL Server"],
+    title: "Full-stack product engineering",
+    description: "I build across the browser, API, and database, with C#/.NET and React as my main tools.",
+    skills: ["C# / .NET 8 / .NET 9", "ASP.NET Core / Web API", "React / Redux", "TypeScript / JavaScript", "Angular", "HTML / CSS", "Blazor", "Entity Framework Core", "SQL Server / T-SQL", "VB.NET / VB6", "ASP.NET Web Forms", "Crystal Reports"],
   },
   {
     id: "04",
-    title: "Cloud, data & AI",
-    description: "Runtime state, containers, and agent workflows that stay under human control.",
-    skills: ["Azure / Docker", "Redis", "Governed agents", "MQTT / SAP"],
+    title: "Cloud, data & applied AI",
+    description: "Cloud delivery, distributed caching, industrial integrations, and agent workflows with governance and human approval built in.",
+    skills: ["Microsoft Azure", "Azure SQL / Key Vault", "Azure DevOps / Container Registry", "Application Insights", "Docker", "Redis", "PostgreSQL / pgvector", "Microsoft.Extensions.AI", "MQTT / Mosquitto", "SAP OData", "xUnit / unit & integration testing", "NuGet"],
   },
 ];
 
+// Job experience source: the supplied Profile (1).pdf LinkedIn export.
 export const career: readonly CareerEntry[] = [
   {
-    period: "APR 2026 — PRESENT",
+    period: "APRIL 2026 — PRESENT",
     company: "Gleason Corporation",
     title: "Staff Software Engineer",
-    location: "Bengaluru · Remote",
-    description:
-      "Promoted after taking cross-product ownership of engineering SaaS, licensing, identity, and AI. I lead five engineers and stay in the design, the code, and the production issues.",
+    location: "Bengaluru",
     highlights: [
-      "Set boundaries across React frontends, .NET services, SQL Server, Redis, identity, and containerised deployment.",
-      "Turn ambiguous engineering-domain requirements into API contracts, epics, and work a team can deliver independently.",
-      "Replace product-specific auth and licensing with shared services used by more than one Gleason application.",
+      "Architect and build secure, distributed enterprise applications across .NET, React and Azure, spanning cloud and customer-hosted environments.",
+      "Drive system design across identity, authentication, authorization and application security, including OAuth 2.0/OIDC, OpenIddict and hardware-backed device identity using TPM.",
+      "Design scalable asynchronous architectures using Azure Service Bus, distributed workers and stateful processing workflows, including systems that require long-running sessions and callbacks.",
+      "Work across application and infrastructure boundaries to solve scalability, reliability and deployment challenges in complex engineering software platforms.",
+      "Provide technical direction through architecture reviews, design discussions, code reviews and implementation guidance across multiple components and services.",
+      "Explore and integrate AI-assisted engineering and LLM-based capabilities where they provide practical value while maintaining deterministic validation and sound engineering practices.",
     ],
-    tags: ["Staff", "5 engineers", "Identity", "Licensing", "AI"],
+    tags: [".NET / C#", "React", "TypeScript", "Azure", "Azure Service Bus", "SQL Server", "Redis", "Docker", "OAuth/OIDC", "OpenIddict", "TPM", "CI/CD"],
     isCurrent: true,
   },
   {
-    period: "AUG 2021 — MAR 2026",
+    period: "AUGUST 2021 — MARCH 2026",
     company: "Gleason Corporation",
     title: "Senior Software Engineer",
-    location: "Bengaluru · Remote",
-    description:
-      "The years the platforms were built. Browser delivery for KISSsoft, a cloud license manager, and the authentication service the suite now shares.",
-    highlights: [
-      "Modernised desktop engineering workflows with React, Redux, ASP.NET Core, Entity Framework Core, and SQL Server.",
-      "Split licence runtime state into Redis and durable entitlements into SQL Server.",
-      "Shipped OpenIddict-based SSO: authorisation code with PKCE, client credentials, MFA, and passkeys.",
-    ],
-    tags: ["KISSsoft", "OpenIddict", "Redis", "Docker"],
-  },
-  {
-    period: "NOV 2019 — AUG 2021",
-    company: "DealerSocket, a Solera company",
-    title: "Software Engineer I",
     location: "Bengaluru",
-    description:
-      "Automotive CRM. New React features living next to ASP.NET Web Forms and VB.NET, plus the Scrum Master seat for the team.",
     highlights: [
-      "Shipped CRM workflows across React, TypeScript, Angular, ASP.NET Web API, and SQL Server stored procedures.",
-      "Cleared defects that crossed the UI, the API, and local environments blocking the team.",
-      "Star of the Month more than once, for React adoption and CRM delivery.",
+      "Designed and delivered enterprise applications using .NET/C#, React/TypeScript and Azure, working across frontend, backend, APIs, databases and cloud services.",
+      "Built and evolved distributed application workflows using Azure Service Bus, SQL Server, Redis and containerized services.",
+      "Designed APIs, service integrations and authentication/authorization flows for applications spanning cloud and customer-hosted environments.",
+      "Improved application architecture by separating responsibilities, defining service boundaries and reducing coupling between components.",
+      "Worked on production systems involving asynchronous processing, long-running workflows and integration with engineering applications.",
+      "Contributed to technical design, code reviews, troubleshooting and production issue resolution across the application stack.",
+      "Built deployment and CI/CD workflows using Azure DevOps, Docker and Azure Container Registry.",
     ],
-    tags: ["React", "Angular", "Scrum Master", "SQL Server"],
+    tags: [".NET / C#", "ASP.NET Core", "React", "TypeScript", "Azure", "SQL Server", "Redis", "Azure Service Bus", "Docker", "REST APIs", "OAuth/OIDC"],
   },
   {
-    period: "OCT 2016 — NOV 2019",
-    company: "Allscripts Healthcare Solutions",
+    period: "JULY 2020 — SEPTEMBER 2025",
+    company: "Freelance",
+    title: "Freelance Solidity Developer",
+    highlights: [
+      "Develop and experiment with Solidity-based smart contracts and blockchain applications.",
+      "Work on contract logic, integration patterns and blockchain-focused proof-of-concepts.",
+      "Explore practical use cases around decentralized applications and token-based systems.",
+    ],
+    tags: ["Solidity", "Smart Contracts", "Web3", "Blockchain"],
+  },
+  {
+    period: "NOVEMBER 2019 — AUGUST 2021",
+    company: "DealerSocket",
+    title: "Software Engineer",
+    location: "Bangalore",
+    highlights: [
+      "Worked as a Full Stack Developer within the CRM Engineering team, contributing to the development of DealerSocket Blackbird CRM for automotive dealerships.",
+      "Developed application functionality across frontend and backend technologies using React, Angular, TypeScript, .NET and .NET Core.",
+      "Collaborated within the product engineering team on ongoing CRM development and feature delivery.",
+    ],
+    tags: ["React", "Angular", "TypeScript", ".NET", ".NET Core"],
+  },
+  {
+    period: "SEPTEMBER 2017 — NOVEMBER 2019",
+    company: "Allscripts",
     title: "Associate Software Engineer",
     location: "Bengaluru",
-    description:
-      "Healthcare practice management, then the first moves of that estate toward the browser and Azure.",
     highlights: [
-      "Built admin, financial, and reporting workflows in C#, VB.NET, T-SQL, SQL Server, and Crystal Reports.",
-      "Modernised selected legacy paths with React, Angular, .NET Core, Docker, and Azure SQL.",
-      "Trained engineers on Azure, Web APIs, Entity Framework, and Angular. Spot Award, CLEAR Award, Innovation Champions.",
+      "Analyzed user stories and functional requirements, estimated development scope, and translated requirements into technical solutions.",
+      "Prepared technical design specifications and implemented application features with accompanying unit testing.",
+      "Participated in code reviews, design reviews and technical discussions with the development team.",
+      "Collaborated with business analysts and product owners throughout development, including sprint planning, refinement and product demonstrations.",
+      "Supported production releases, investigated defects and contributed to POCs and technical spike work for new solutions.",
     ],
-    tags: ["Healthcare", ".NET", "Azure SQL", "Mentoring"],
+    tags: [],
+  },
+  {
+    period: "OCTOBER 2016 — AUGUST 2017",
+    company: "Allscripts",
+    title: "Intern",
+    location: "Bengaluru",
+    highlights: [
+      "Supported the development team with requirement analysis, coding, debugging and unit testing.",
+      "Assisted in preparing technical documentation and participated in code/design discussions.",
+      "Contributed to sprint activities, product demonstrations and investigation of development issues.",
+      "Worked on POCs and spike tasks to explore technical solutions.",
+    ],
+    tags: [],
   },
 ];
 
@@ -154,33 +180,33 @@ export const systemAreas: readonly SystemArea[] = [
   {
     index: "01",
     label: "INDUSTRIAL SAAS",
-    heading: "KISSsoft, in the browser.",
+    heading: "KISSsoft SaaS Platform",
     description:
-      "KISSsoft designs, optimises, and checks machine elements. I helped take that desktop workflow to the cloud: React and Redux in the browser, ASP.NET Core and Entity Framework behind a REST boundary, and the shared Gleason identity platform instead of a login that belonged only to this product.",
+      "I help bring KISSsoft’s engineering calculations from the desktop into a browser-based product. I work with domain specialists to translate complex calculation workflows into browser features, connecting them to .NET services through clear APIs. My work spans the React frontend, backend integration, and shared sign-in.",
     stack: ["React", "Redux", "ASP.NET Core", "EF Core", "SQL Server"],
   },
   {
     index: "02",
     label: "LICENSING",
-    heading: "Runtime state, kept separate.",
+    heading: "KISSsoft License Manager",
     description:
-      "A cloud license manager for floating and standalone KISSsoft licences. Redis holds the fast-changing checkout state. SQL Server holds customers, entitlements, and configuration. Desktop and cloud clients acquire, validate, allocate, and release through the same service, with Blazor for administration.",
-    stack: ["C#", "Blazor", "Redis", "SQL Server", "Docker"],
+      "I built the service that manages how KISSsoft licences are used across desktop and cloud applications. The design keeps live licence activity in Redis and customer entitlements in SQL Server, with administration in Blazor. My work covered the licence lifecycle, access control, and deployment support.",
+    stack: ["C#", "ASP.NET Core", "Blazor", "Redis", "SQL Server"],
   },
   {
     index: "03",
-    label: "IDENTITY / SSO",
-    heading: "One authority for the suite.",
+    label: "APPLICATION SECURITY",
+    heading: "Application security",
     description:
-      "AuthServer replaced separate identity implementations. Browsers use OpenID Connect with PKCE. Services use OAuth 2.0 client credentials. Users, apps, roles, and claims live in one place, with email OTP, TOTP, trusted devices, Redis rate limits, WebAuthn passkeys, and secrets in Azure Key Vault.",
-    stack: ["OpenIddict", ".NET 9", "OIDC", "FIDO2", "Key Vault"],
+      "I built shared sign-in and access control for Gleason applications, covering users, services, multi-factor authentication, and passkeys. I’m also building a harness that establishes an identity for each client installation using a TPM-backed, non-exportable private key. This work brings together hardware attestation, TPM manufacturer endorsement-key (EK) CA validation, DPoP, and mutual TLS (mTLS) to tie authentication to proof of key possession.",
+    stack: ["OpenIddict", ".NET 9", "OpenID Connect", "WebAuthn / FIDO2", "TPM", "Hardware attestation", "EK CA validation", "DPoP", "mTLS"],
   },
   {
     index: "04",
     label: "GOVERNED AI",
-    heading: "Agents that wait for a person.",
+    heading: "GEMS AI",
     description:
-      "GEMS is a governed agent platform for industrial operations, co-designed with the Principal Architect. Human approval gates, resource limits, immutable audit, and recovery for long-running work. SAP OData and MQTT connect the enterprise core to the shop floor. Generated services stay testable.",
-    stack: [".NET 8", "MQTT", "PostgreSQL", "pgvector", "SAP OData"],
+      "I work closely with the Principal Architect on GEMS AI, a platform for industrial operations. My focus was making agent workflows manageable: giving people approval points, recording what happened, and helping long-running tasks recover. I also contributed to connecting business and shop-floor data and turning service definitions into deployable code.",
+    stack: [".NET 8", "Microsoft.Extensions.AI", "MQTT", "PostgreSQL", "SAP OData"],
   },
 ];
